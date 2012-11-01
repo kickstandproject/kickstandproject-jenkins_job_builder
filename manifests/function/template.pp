@@ -22,7 +22,7 @@ define jenkins_job_builder::function::template(
   file { "${jenkins_job_builder::params::configdir}/${name}":
     ensure  => file,
     content => $content,
-    require => Class[$jenkins_job_builder::params::configdir],
+    require => File[$jenkins_job_builder::params::configdir],
   }
 }
 
