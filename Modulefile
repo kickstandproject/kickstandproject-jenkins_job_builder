@@ -1,5 +1,5 @@
 name    'kickstandproject-jenkins_job_builder'
-version '0.0.2'
+version '0.0.3'
 author 'kickstandproject'
 license 'Apache 2.0'
 summary 'UNKNOWN'
