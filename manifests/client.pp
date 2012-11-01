@@ -18,7 +18,16 @@
 # of the Apache License, Version 2.0. See the LICENSE file at
 # the top of the source tree.
 #
-class jenkins_job_builder::client {
+class jenkins_job_builder::client(
+  $settings = {},
+) {
+  $defaults = {
+    'password' => '',
+    'url'      => 'http://$::{fqdn}',
+    'user'     => 'jenkins',
+  }
+  $settings_real = merge($defaults, $settings)
+
   include jenkins_job_builder::params
   include jenkins_job_builder::client::init
 }

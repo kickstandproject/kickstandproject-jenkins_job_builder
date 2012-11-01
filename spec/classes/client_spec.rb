@@ -9,6 +9,24 @@ describe 'jenkins_job_builder::client' do
     } }
 
     it do
+      should contain_file('/etc/jenkins_jobs').with({
+        'ensure'  => 'directory',
+        'group'   => 'root',
+        'mode'    => '0644',
+        'owner'   => 'root',
+      })
+    end
+
+    it do
+      should contain_file('/etc/jenkins_jobs/jenkins_jobs.ini').with({
+        'ensure'  => 'file',
+        'group'   => 'root',
+        'mode'    => '0644',
+        'owner'   => 'root',
+      })
+    end
+
+    it do
       should contain_package('jenkins-job-builder').with_ensure('present')
     end
   end

@@ -13,6 +13,10 @@
 # the top of the source tree.
 #
 class jenkins_job_builder::params {
+  $basedir = $::operatingsystem ? {
+    default => '/etc/jenkins_jobs',
+  }
+
   $configfile = $::operatingsystem ? {
     default => '/etc/jenkins_jobs/jenkins_jobs.ini',
   }

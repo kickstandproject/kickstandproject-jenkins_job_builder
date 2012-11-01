@@ -15,6 +15,12 @@
 class jenkins_job_builder::client::init {
   include jenkins_job_builder::client::install
   include jenkins_job_builder::client::config
+
+  File {
+    group   => $jenkins_job_builder::params::group,
+    mode    => $jenkins_job_builder::params::mode,
+    owner   => $jenkins_job_builder::params::owner,
+  }
 }
 
 # vim:sw=2:ts=2:expandtab:textwidth=79
