@@ -23,7 +23,7 @@ class jenkins_job_builder::client(
 ) {
   $defaults = {
     'password' => '',
-    'url'      => 'http://$::{fqdn}',
+    'url'      => 'http://localhost',
     'user'     => 'jenkins',
   }
   $settings_real = merge($defaults, $settings)
