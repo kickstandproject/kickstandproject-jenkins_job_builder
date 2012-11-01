@@ -20,6 +20,7 @@ class jenkins_job_builder::client::config {
 
   file { $jenkins_job_builder::params::configdir:
     ensure  => directory,
+    force   => true,
     notify  => Exec['jenkins-jobs-update'],
     purge   => true,
     recurse => true,
