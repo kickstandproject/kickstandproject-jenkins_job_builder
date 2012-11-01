@@ -14,6 +14,7 @@
 #
 class jenkins_job_builder::client::init {
   include jenkins_job_builder::client::install
+  include jenkins_job_builder::client::command
   include jenkins_job_builder::client::config
 
   File {

@@ -18,6 +18,15 @@ describe 'jenkins_job_builder::client' do
     end
 
     it do
+      should contain_file('/etc/jenkins_jobs/configs').with({
+        'ensure'  => 'directory',
+        'group'   => 'root',
+        'mode'    => '0644',
+        'owner'   => 'root',
+      })
+    end
+
+    it do
       should contain_file('/etc/jenkins_jobs/jenkins_jobs.ini').with({
         'ensure'  => 'file',
         'group'   => 'root',

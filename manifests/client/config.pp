@@ -18,12 +18,18 @@ class jenkins_job_builder::client::config {
     require => Class['jenkins_job_builder::client::install'],
   }
 
+  file { $jenkins_job_builder::params::configdir:
+    ensure  => directory,
+    notify  => Exec['jenkins-job-update'],
+    purge   => true,
+    recurse => true,
+    require => File[$jenkins_job_builder::params::basedir],
+  }
+
   file { $jenkins_job_builder::params::configfile:
     ensure  => file,
     content => template('jenkins_job_builder/etc/jenkins_jobs/jenkins_jobs.ini.erb'),
-    group   => $jenkins_job_builder::params::group,
-    mode    => $jenkins_job_builder::params::mode,
-    owner   => $jenkins_job_builder::params::owner,
+    notify  => Exec['jenkins-job-update'],
     require => File[$jenkins_job_builder::params::basedir],
   }
 }
