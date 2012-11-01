@@ -22,7 +22,7 @@ define jenkins_job_builder::function::template(
   file { "${jenkins_job_builder::params::configdir}/${name}":
     ensure  => file,
     content => $content,
-    notify  => Exec['jenkins-jobs-update],
+    notify  => Exec['jenkins-jobs-update'],
     require => File[$jenkins_job_builder::params::configdir],
   }
 }
