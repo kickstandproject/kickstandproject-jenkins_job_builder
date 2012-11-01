@@ -28,7 +28,8 @@ class jenkins_job_builder::client::config {
 
   file { $jenkins_job_builder::params::configfile:
     ensure  => file,
-    content => template('jenkins_job_builder/etc/jenkins_jobs/jenkins_jobs.ini.erb'),
+    content =>
+      template('jenkins_job_builder/etc/jenkins_jobs/jenkins_jobs.ini.erb'),
     notify  => Exec['jenkins-jobs-update'],
     require => File[$jenkins_job_builder::params::basedir],
   }

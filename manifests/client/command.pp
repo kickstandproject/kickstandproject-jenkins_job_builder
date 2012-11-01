@@ -14,7 +14,8 @@
 #
 class jenkins_job_builder::client::command {
   exec { 'jenkins-jobs-update':
-    command     => "jenkins-jobs update ${jenkins_job_builder::params::configdir}",
+    command     =>
+      "jenkins-jobs update ${jenkins_job_builder::params::configdir}",
     refreshonly => true,
   }
 }
