@@ -19,14 +19,20 @@
 # the top of the source tree.
 #
 class jenkins_job_builder::client(
+  $package = {},
   $settings = {},
 ) {
-  $defaults = {
+  $default_package = {
+    'ensure' => 'present',
+  }
+  $package_real = merge($default_package, $package)
+
+  $default_settings = {
     'password' => '',
     'url'      => 'http://localhost',
     'user'     => 'jenkins',
   }
-  $settings_real = merge($defaults, $settings)
+  $settings_real = merge($default_settings, $settings)
 
   include jenkins_job_builder::params
   include jenkins_job_builder::client::init

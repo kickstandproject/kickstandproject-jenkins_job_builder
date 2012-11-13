@@ -14,7 +14,8 @@
 #
 class jenkins_job_builder::client::install {
   package { $jenkins_job_builder::params::packagename:
-    ensure => present,
+    ensure   => $jenkins_job_builder::client::package_real['ensure'],
+    provider => $jenkins_job_builder::client::package_real['provider'],
   }
 }
 

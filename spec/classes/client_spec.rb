@@ -38,6 +38,21 @@ describe 'jenkins_job_builder::client' do
     it do
       should contain_package('jenkins-job-builder').with_ensure('present')
     end
+
+    context 'latest pip package' do
+      let(:params) { {
+        :package => {
+          'ensure'   => 'latest',
+          'provider' => 'pip',
+        },
+      } }
+      it do
+        should contain_package('jenkins-job-builder').with({
+          'ensure' => 'latest',
+          'provider' => 'pip',
+        })
+      end
+    end
   end
 end
 
