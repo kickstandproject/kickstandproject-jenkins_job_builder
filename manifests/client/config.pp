@@ -18,22 +18,12 @@ class jenkins_job_builder::client::config {
     require => Class['jenkins_job_builder::client::install'],
   }
 
-  file { $jenkins_job_builder::params::configdir:
-    ensure  => directory,
-    force   => true,
-    notify  => Exec['jenkins-jobs-update'],
-    purge   => true,
-    recurse => true,
-    require => File[$jenkins_job_builder::params::basedir],
-  }
-
   file { $jenkins_job_builder::params::configfile:
     ensure  => file,
-    content =>
-      template('jenkins_job_builder/etc/jenkins_jobs/jenkins_jobs.ini.erb'),
+    content => template('jenkins_job_builder/etc/jenkins_jobs/jenkins_jobs.ini.erb'),
     notify  => Exec['jenkins-jobs-update'],
     require => File[$jenkins_job_builder::params::basedir],
   }
 }
 
-# vim:sw=2:ts=2:expandtab:textwidth=79
+# vim:sw=2:ts=2:expandtab
