@@ -17,6 +17,10 @@ class jenkins_job_builder::params {
     default => '/etc/jenkins_jobs',
   }
 
+  $configdir = $::operatingsystem ? {
+    default => '/etc/jenkins_jobs/configs',
+  }
+
   $configfile = $::operatingsystem ? {
     default => '/etc/jenkins_jobs/jenkins_jobs.ini',
   }
